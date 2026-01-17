@@ -69,9 +69,14 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode, scrollToSec
             >
               <ThemeIcon />
             </button>
-            <button className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2 rounded-full text-sm font-bold hover:bg-slate-800 dark:hover:bg-slate-100 transition-all">
+            <a 
+              href="https://app.datamatically.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-2 rounded-full text-sm font-bold hover:bg-slate-800 dark:hover:bg-slate-100 transition-all"
+            >
               Login
-            </button>
+            </a>
           </div>
         </div>
 
@@ -116,9 +121,14 @@ const Header: React.FC<HeaderProps> = ({ isDarkMode, toggleDarkMode, scrollToSec
             </a>
           ))}
           <div className="pt-4 border-t border-slate-100 dark:border-slate-800">
-            <button className="w-full py-3 text-center bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold">
+            <a 
+              href="https://app.datamatically.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="block w-full py-3 text-center bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-bold"
+            >
               Login
-            </button>
+            </a>
           </div>
         </div>
       )}

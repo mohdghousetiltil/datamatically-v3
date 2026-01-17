@@ -103,12 +103,17 @@ const ProblemSection: React.FC = () => {
             </p>
           </div>
           
-          <button className="group flex items-center gap-3 px-6 py-2.5 text-sm md:text-base font-space font-bold text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl hover:border-brand-purple dark:hover:border-purple-400 hover:text-brand-purple dark:hover:text-purple-400 transition-all duration-300">
+          <a 
+            href="https://calendly.com/datamatically" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group flex items-center gap-3 px-6 py-2.5 text-sm md:text-base font-space font-bold text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl hover:border-brand-purple dark:hover:border-purple-400 hover:text-brand-purple dark:hover:text-purple-400 transition-all duration-300"
+          >
             <span>Learn more</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </button>
+          </a>
         </div>
 
       </div>

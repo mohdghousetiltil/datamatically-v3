@@ -11,12 +11,9 @@ const Hero: React.FC = () => {
   // Scroll tracking for the hero image effect
   const { scrollY } = useScroll();
   
-  // Transform scroll position into opacity and blur
-  // From 0px to 500px of scroll (roughly the hero height transition):
-  // Opacity goes from 1 to 0
-  // Blur goes from 0px to 20px
+  // Transform scroll position into opacity
+  // From 0px to 500px of scroll: Opacity goes from 1 to 0
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
-  // const blur = useTransform(scrollY, [0, 500], ["blur(0px)", "blur(20px)"]);
 
   useEffect(() => {
     let index = 0;
@@ -31,6 +28,14 @@ const Hero: React.FC = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  const scrollToCaseStudies = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const element = document.getElementById('case-studies');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center pt-20 pb-16 px-6 md:px-12 overflow-hidden">
@@ -76,14 +81,22 @@ const Hero: React.FC = () => {
           className="mt-8 md:mt-10 flex flex-col sm:flex-row items-center gap-4 opacity-0 animate-fade-in-up w-full sm:w-auto" 
           style={{ animationDelay: '1200ms', animationFillMode: 'forwards' }}
         >
-          <button className="group w-full sm:w-auto px-6 py-3.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm md:text-base hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-2 font-space">
+          <a 
+            href="https://calendly.com/datamatically" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="group w-full sm:w-auto px-6 py-3.5 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm md:text-base hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-2 font-space"
+          >
             <span>Get a Free Audit</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
-          </button>
+          </a>
           
-          <button className="group w-full sm:w-auto px-6 py-3.5 bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl font-bold text-sm md:text-base hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 flex items-center justify-center gap-2 font-space">
+          <button 
+            onClick={scrollToCaseStudies}
+            className="group w-full sm:w-auto px-6 py-3.5 bg-slate-100/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl font-bold text-sm md:text-base hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-300 flex items-center justify-center gap-2 font-space"
+          >
             <span>View Case Studies</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -101,7 +114,7 @@ const Hero: React.FC = () => {
         className="absolute bottom-0 right-0 hidden md:block md:max-w-[450px] lg:max-w-[550px] xl:max-w-[650px] pointer-events-none z-10"
       >
         <img 
-          src="/9895435.png" 
+          src="public/9895435.png" 
           alt="Operational Systems Illustration" 
           className="w-full h-auto drop-shadow-[0_0_50px_rgba(59,130,246,0.15)] dark:drop-shadow-[0_0_50px_rgba(147,51,234,0.2)]"
         />
