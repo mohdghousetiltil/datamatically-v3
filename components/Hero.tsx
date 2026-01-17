@@ -101,7 +101,7 @@ const Hero: React.FC = () => {
         className="absolute bottom-0 right-0 hidden md:block md:max-w-[450px] lg:max-w-[550px] xl:max-w-[650px] pointer-events-none z-10"
       >
         <img 
-          src="public/9895435.png" 
+          src="/9895435.png" 
           alt="Operational Systems Illustration" 
           className="w-full h-auto drop-shadow-[0_0_50px_rgba(59,130,246,0.15)] dark:drop-shadow-[0_0_50px_rgba(147,51,234,0.2)]"
         />
