@@ -97,7 +97,7 @@ const ProjectCard: React.FC<{ study: CaseStudy }> = ({ study }) => {
                     </div>
                     <div className="flex items-center gap-1.5 text-slate-900 dark:text-white group/btn">
                       <span className="text-[10px] font-bold uppercase tracking-widest">Case Study</span>
-                      <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      {/* <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" /> */}
                     </div>
                  </div>
                </div>

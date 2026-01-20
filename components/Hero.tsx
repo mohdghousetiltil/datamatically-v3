@@ -111,7 +111,8 @@ const Hero: React.FC = () => {
         initial={{ opacity: 0, x: 50, scale: 0.95 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
         transition={{ delay: 1.5, duration: 1, ease: "easeOut" }}
-        className="absolute bottom-0 right-0 hidden md:block md:max-w-[450px] lg:max-w-[550px] xl:max-w-[650px] pointer-events-none z-10"
+        // className="absolute bottom-0 right-0 hidden md:block md:max-w-[450px] lg:max-w-[550px] xl:max-w-[650px] pointer-events-none z-10"
+        className="absolute bottom-0 right-0 hidden md:block md:max-w-[600px] lg:max-w-[700px] xl:max-w-[800px] pointer-events-none z-10"
       >
         <img 
           src="/9895435.png" 
