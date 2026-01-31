@@ -6,13 +6,13 @@ import { fadeInUp, staggerContainer } from '../utils/animations';
 
 const MotionDiv = motion.div as any;
 
-const TeamMember = ({ name }: { name: string }) => (
+const TeamMember = ({ name, role }: { name: string; role: string }) => (
   <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center group hover:border-brand-blue/50 transition-all duration-300">
     <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
       <Users className="w-8 h-8 text-slate-400 group-hover:text-brand-blue" />
     </div>
     <h4 className="text-lg font-space font-bold text-slate-900 dark:text-white">{name}</h4>
-    <p className="text-xs text-slate-500 uppercase tracking-widest mt-1">Founding Partner</p>
+    <p className="text-xs text-slate-500 uppercase tracking-widest mt-1">{role}</p>
   </div>
 );
 
@@ -81,9 +81,15 @@ export default function About() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <MotionDiv variants={fadeInUp}><TeamMember name="Mohammed Ghouse Tiltil" /></MotionDiv>
-            <MotionDiv variants={fadeInUp}><TeamMember name="Charlie Guthrie" /></MotionDiv>
-            <MotionDiv variants={fadeInUp}><TeamMember name="Craig Haydon" /></MotionDiv>
+            <MotionDiv variants={fadeInUp}>
+              <TeamMember name="Mohammed Ghouse Tiltil" role="Co-Founder & CTO" />
+            </MotionDiv>
+            <MotionDiv variants={fadeInUp}>
+              <TeamMember name="Charlie Guthrie" role="Co-Founder & CEO" />
+            </MotionDiv>
+            <MotionDiv variants={fadeInUp}>
+              <TeamMember name="Craig Haydon" role="Co-Founder & COO" />
+            </MotionDiv>
           </div>
         </MotionDiv>
 
