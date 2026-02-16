@@ -50,7 +50,7 @@ const ProblemSection: React.FC = () => {
   ];
 
   return (
-    <section id="problem" className="py-12 md:py-16 px-6 md:px-12 bg-white dark:bg-slate-950 overflow-hidden scroll-mt-32 md:scroll-mt-48">
+    <section id="problem" className="py-12 md:py-16 px-6 md:px-12 bg-soft-white dark:bg-slate-950 overflow-hidden scroll-mt-32 md:scroll-mt-48">
       <div className="max-w-7xl mx-auto">
         
         {/* Headline Hook - Centered for mobile */}
@@ -78,7 +78,7 @@ const ProblemSection: React.FC = () => {
                 key={idx}
                 className="group relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 md:p-8 rounded-2xl md:rounded-3xl transition-all duration-300 hover:shadow-lg flex flex-col items-center text-center gap-3 md:gap-6 cursor-default"
               >
-                <div className="shrink-0 p-2.5 md:p-3 rounded-xl bg-slate-50 dark:bg-slate-800 transition-transform group-hover:scale-105">
+                <div className="shrink-0 p-2.5 md:p-3 rounded-xl bg-soft-alt dark:bg-slate-800 transition-transform group-hover:scale-105">
                   {prob.icon}
                 </div>
                 <h3 className="text-xs md:text-lg font-space font-bold text-slate-800 dark:text-slate-200 leading-snug">

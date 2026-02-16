@@ -7,8 +7,8 @@ import { fadeInUp, staggerContainer } from '../utils/animations';
 const MotionDiv = motion.div as any;
 
 const TeamMember = ({ name, role }: { name: string; role: string }) => (
-  <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center group hover:border-brand-blue/50 transition-all duration-300">
-    <div className="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+  <div className="p-6 rounded-2xl bg-soft-alt dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center group hover:border-brand-blue/50 transition-all duration-300 shadow-sm">
+    <div className="w-16 h-16 rounded-full bg-soft-white dark:bg-slate-800 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform shadow-inner">
       <Users className="w-8 h-8 text-slate-400 group-hover:text-brand-blue" />
     </div>
     <h4 className="text-lg font-space font-bold text-slate-900 dark:text-white">{name}</h4>
@@ -18,7 +18,7 @@ const TeamMember = ({ name, role }: { name: string; role: string }) => (
 
 export default function About() {
   return (
-    <section id="about" className="py-16 md:py-32 px-6 md:px-12 relative z-10 scroll-mt-20 md:scroll-mt-24 bg-white dark:bg-slate-950">
+    <section id="about" className="py-16 md:py-32 px-6 md:px-12 relative z-10 scroll-mt-20 md:scroll-mt-24 bg-soft-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
@@ -55,7 +55,7 @@ export default function About() {
           </MotionDiv>
           
           <MotionDiv variants={fadeInUp} className="relative">
-             <div className="p-8 md:p-12 rounded-[2rem] bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 relative overflow-hidden">
+             <div className="p-8 md:p-12 rounded-[2rem] bg-soft-alt dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 relative overflow-hidden shadow-sm">
                 <div className="absolute top-0 right-0 p-4 opacity-10">
                    <ShieldCheck className="w-32 h-32 text-brand-blue" />
                 </div>

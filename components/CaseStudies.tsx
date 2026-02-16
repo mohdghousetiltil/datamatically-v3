@@ -22,7 +22,7 @@ const ProjectCard: React.FC<{ study: CaseStudy }> = ({ study }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative overflow-hidden rounded-[2.5rem] aspect-[4/5] shadow-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-white/10 shrink-0 w-[85vw] md:w-auto snap-center cursor-pointer"
+      className="group relative overflow-hidden rounded-[2.5rem] aspect-[4/5] shadow-xl bg-soft-alt dark:bg-slate-900 border border-slate-200 dark:border-white/10 shrink-0 w-[85vw] md:w-auto snap-center cursor-pointer"
     >
        {/* Background Image with Zoom Effect */}
        <div className="absolute inset-0 overflow-hidden">
@@ -143,7 +143,7 @@ const CaseStudies: React.FC = () => {
   ];
 
   return (
-    <section id="case-studies" className="py-24 md:py-32 px-6 md:px-12 relative z-10 scroll-mt-20 md:scroll-mt-24 overflow-hidden bg-white dark:bg-slate-950">
+    <section id="case-studies" className="py-24 md:py-32 px-6 md:px-12 relative z-10 scroll-mt-20 md:scroll-mt-24 overflow-hidden bg-soft-white dark:bg-slate-950">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}

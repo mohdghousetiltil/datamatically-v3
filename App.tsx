@@ -48,7 +48,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300 selection:bg-brand-blue/30">
+    <div className="min-h-screen bg-soft-white dark:bg-slate-950 transition-colors duration-300 selection:bg-brand-blue/30">
       <Header 
         isDarkMode={isDarkMode} 
         toggleDarkMode={toggleDarkMode} 
@@ -68,7 +68,7 @@ const App: React.FC = () => {
       </main>
       
       {/* Footer Placeholder */}
-      <footer className="py-12 px-6 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500 text-sm">
+      <footer className="py-12 px-6 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500 text-sm bg-soft-white dark:bg-slate-950">
         <p>© {new Date().getFullYear()} Datamatically Pty Ltd. All rights reserved.</p>
       </footer>
     </div>
