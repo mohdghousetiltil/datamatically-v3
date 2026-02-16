@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Phone } from 'lucide-react';
+import ContactModal from './ContactModal';
 
 const MotionDiv = motion.div as any;
 
 const Hero: React.FC = () => {
-  const animatedWord = "Scale.";
+  const animatedWord = "Permanently.";
   const [typedWord, setTypedWord] = useState("");
-  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   // Scroll tracking for the hero image effect
   const { scrollY } = useScroll();
-  
+
   // Transform scroll position into opacity for desktop effect
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
@@ -26,7 +28,7 @@ const Hero: React.FC = () => {
     }, 100);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [animatedWord]);
 
   const scrollToSection = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
@@ -34,6 +36,11 @@ const Hero: React.FC = () => {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleGetStarted = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsModalOpen(true);
   };
 
   return (
@@ -47,19 +54,19 @@ const Hero: React.FC = () => {
       {/* Main content container */}
       <div className="max-w-7xl mx-auto w-full flex flex-col items-start text-left relative md:static">
         {/* Value Badge Pill */}
-        <button 
+        <button
           onClick={(e) => scrollToSection(e, 'case-studies')}
-          className="mb-6 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-soft-alt dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-purple/50 transition-colors cursor-pointer group"
+          className="mb-6 inline-flex items-center px-4 py-2.5 md:px-3 md:py-1 rounded-2xl md:rounded-full bg-soft-alt dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-purple/50 transition-all cursor-pointer group text-center md:text-left"
         >
           <span className="text-[10px] md:text-sm font-bold font-space text-slate-700 dark:text-slate-400">
-            ⚡ Save 50+ Hours of Manual Work Every Month – <span className="text-brand-grey dark:text-grey-400 underline group-hover:underline">View Case Studies</span>
+            Save 50+ Hours of Manual Work Monthly – <span className="text-brand-purple dark:text-purple-400 group-hover:underline">View Case Studies</span>
           </span>
         </button>
 
         {/* Main Header Headline */}
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-space font-bold leading-tight md:leading-[1.15] max-w-4xl tracking-tight">
           <span className="text-slate-900 dark:text-white">
-            Eliminate Operational Friction. Build Systems That{" "}
+            We Remove Operational friction From Growing Businesses.{" "}
           </span>
           <span className="text-slate-600 dark:text-slate-400 whitespace-nowrap">
             {typedWord}
@@ -68,8 +75,8 @@ const Hero: React.FC = () => {
         </h1>
 
         {/* Supporting Subheading */}
-        <div 
-          className="mt-6 md:mt-8 max-w-2xl opacity-0 animate-fade-in-up" 
+        <div
+          className="mt-6 md:mt-8 max-w-2xl opacity-0 animate-fade-in-up"
           style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
         >
           <p className="text-base md:text-xl text-slate-600 dark:text-slate-400 font-sans font-medium leading-relaxed">
@@ -90,20 +97,20 @@ const Hero: React.FC = () => {
         </MotionDiv>
 
         {/* CTA Buttons */}
-        <div 
-          className="mt-8 md:mt-10 flex flex-row flex-wrap items-start gap-3 md:gap-4 opacity-0 animate-fade-in-up w-full" 
+        <div
+          className="mt-8 md:mt-10 flex flex-row flex-wrap items-start gap-3 md:gap-4 opacity-0 animate-fade-in-up w-full"
           style={{ animationDelay: '1200ms', animationFillMode: 'forwards' }}
         >
-          <a 
-            href="tel:0418172882" 
+          <a
+            href="tel:0418172882"
             className="group w-fit px-4 md:px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm md:text-base hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-2 md:gap-3 font-space shadow-md"
           >
             <Phone className="w-4 h-4 md:w-5 md:h-5 text-white" />
-            <span className="whitespace-nowrap">0418 172 882</span> 
+            <span className="whitespace-nowrap">0418 172 882</span>
           </a>
-          
-          <button 
-            onClick={(e) => scrollToSection(e, 'contact')}
+
+          <button
+            onClick={handleGetStarted}
             className="group w-fit px-4 md:px-6 py-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl font-bold text-sm md:text-base hover:bg-white transition-all duration-300 flex items-center justify-center gap-2 font-space shadow-sm"
           >
             <span className="whitespace-nowrap">Get started with us</span>
@@ -111,7 +118,7 @@ const Hero: React.FC = () => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
-        </div> 
+        </div>
 
         {/* Hero Image */}
         <MotionDiv
@@ -121,13 +128,15 @@ const Hero: React.FC = () => {
           transition={{ delay: 1.5, duration: 1, ease: "easeOut" }}
           className="relative mt-12 w-full max-w-[320px] hidden md:block md:max-w-[600px] lg:max-w-[700px] xl:max-w-[800px] md:absolute md:mt-0 md:bottom-0 md:right-0 pointer-events-none z-10"
         >
-          <img 
-            src="/9895435.png" 
-            alt="Operational Systems Illustration" 
+          <img
+            src="public/9895435.png"
+            alt="Operational Systems Illustration"
             className="w-full h-auto drop-shadow-[0_0_30px_rgba(59,130,246,0.1)] dark:drop-shadow-[0_0_50px_rgba(147,51,234,0.2)]"
           />
         </MotionDiv>
       </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };
