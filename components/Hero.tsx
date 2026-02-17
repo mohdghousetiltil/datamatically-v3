@@ -6,14 +6,12 @@ import ContactModal from './ContactModal';
 const MotionDiv = motion.div as any;
 
 const Hero: React.FC = () => {
-  const animatedWord = "Permanently.";
+  const animatedWord = "Permanently";
   const [typedWord, setTypedWord] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Scroll tracking for the hero image effect
+  // Scroll tracking for background effects if needed
   const { scrollY } = useScroll();
-
-  // Transform scroll position into opacity for desktop effect
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
   useEffect(() => {
@@ -52,21 +50,21 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Main content container */}
-      <div className="max-w-7xl mx-auto w-full flex flex-col items-start text-left relative md:static">
+      <div className="max-w-7xl mx-auto w-full flex flex-col items-start text-left relative">
         {/* Value Badge Pill */}
         <button
           onClick={(e) => scrollToSection(e, 'case-studies')}
-          className="mb-6 inline-flex items-center px-4 py-2.5 md:px-3 md:py-1 rounded-2xl md:rounded-full bg-soft-alt dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-purple/50 transition-all cursor-pointer group text-center md:text-left"
+          className="mb-6 inline-flex items-center px-4 py-2 md:px-4 md:py-1.5 rounded-full bg-soft-alt dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:border-brand-purple/50 transition-all cursor-pointer group"
         >
-          <span className="text-[10px] md:text-sm font-bold font-space text-slate-700 dark:text-slate-400">
-            Save 50+ Hours of Manual Work Monthly – <span className="text-brand-purple dark:text-purple-400 group-hover:underline">View Case Studies</span>
+          <span className="text-[10px] md:text-sm font-bold font-space text-slate-700 dark:text-slate-400 tracking-tight">
+            ⚡ Automate 50+ Hours of Work
           </span>
         </button>
 
-        {/* Main Header Headline */}
-        <h1 className="text-3xl md:text-5xl lg:text-6xl font-space font-bold leading-tight md:leading-[1.15] max-w-4xl tracking-tight">
+        {/* Main Header Headline - Reduced size slightly */}
+        <h1 className="text-2xl md:text-4xl lg:text-5xl font-space font-bold leading-tight md:leading-[1.15] max-w-4xl tracking-tight">
           <span className="text-slate-900 dark:text-white">
-            We Remove Operational friction From Growing Businesses.{" "}
+            Remove 30–70% of Manual Work From Your Operations —{" "}
           </span>
           <span className="text-slate-600 dark:text-slate-400 whitespace-nowrap">
             {typedWord}
@@ -76,64 +74,49 @@ const Hero: React.FC = () => {
 
         {/* Supporting Subheading */}
         <div
-          className="mt-6 md:mt-8 max-w-2xl opacity-0 animate-fade-in-up"
+          className="mt-6 md:mt-8 max-w-3xl opacity-0 animate-fade-in-up"
           style={{ animationDelay: '800ms', animationFillMode: 'forwards' }}
         >
           <p className="text-base md:text-xl text-slate-600 dark:text-slate-400 font-sans font-medium leading-relaxed">
-            We provide automation systems that reduce spreadsheets, human error, and friction, transforming messy workflows into clean, scalable infrastructure. <span className="text-slate-900 dark:text-white font-semibold">Grow without pains.</span>
+            We design and deploy automation systems that eliminate manual work, reduce errors, and give leadership real-time operational control. <span className="text-slate-900 dark:text-white font-semibold">Clients typically save 50–500 hours per month within the first 90 days.</span>
           </p>
         </div>
-
-        {/* AI Support Line */}
-        <MotionDiv
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.0, duration: 0.8 }}
-          className="mt-4 max-w-2xl"
-        >
-          <p className="text-sm md:text-lg font-medium font-sans italic text-slate-500 dark:text-slate-400 tracking-tight leading-relaxed">
-            Turn AI into a true business partner — embedded into your operations, not bolted on.
-          </p>
-        </MotionDiv>
 
         {/* CTA Buttons */}
         <div
           className="mt-8 md:mt-10 flex flex-row flex-wrap items-start gap-3 md:gap-4 opacity-0 animate-fade-in-up w-full"
-          style={{ animationDelay: '1200ms', animationFillMode: 'forwards' }}
+          style={{ animationDelay: '1000ms', animationFillMode: 'forwards' }}
         >
-          <a
-            href="tel:0418172882"
-            className="group w-fit px-4 md:px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm md:text-base hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-2 md:gap-3 font-space shadow-md"
-          >
-            <Phone className="w-4 h-4 md:w-5 md:h-5 text-white" />
-            <span className="whitespace-nowrap">0418 172 882</span>
-          </a>
-
+          {/* Primary CTA */}
           <button
             onClick={handleGetStarted}
-            className="group w-fit px-4 md:px-6 py-3 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl font-bold text-sm md:text-base hover:bg-white transition-all duration-300 flex items-center justify-center gap-2 font-space shadow-sm"
+            className="group w-fit px-6 md:px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-xl font-bold text-sm md:text-base hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-95 flex items-center justify-center gap-2 font-space shadow-md"
           >
-            <span className="whitespace-nowrap">Get started with us</span>
+            <span className="whitespace-nowrap">Get Free Audit</span>
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </button>
+
+          {/* Secondary CTA */}
+          <a
+            href="tel:0418172882"
+            className="group w-fit px-6 md:px-8 py-4 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white rounded-xl font-bold text-sm md:text-base hover:bg-white transition-all duration-300 flex items-center justify-center gap-3 font-space shadow-sm"
+          >
+            <Phone className="w-4 h-4 md:w-5 md:h-5 text-slate-600 dark:text-slate-400 group-hover:text-brand-purple" />
+            <span className="whitespace-nowrap">Call 0418 172 882</span>
+          </a>
         </div>
 
-        {/* Hero Image */}
-        <MotionDiv
-          style={{ opacity: typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : opacity }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 1, ease: "easeOut" }}
-          className="relative mt-12 w-full max-w-[320px] hidden md:block md:max-w-[600px] lg:max-w-[700px] xl:max-w-[800px] md:absolute md:mt-0 md:bottom-0 md:right-0 pointer-events-none z-10"
+        {/* Trust Line */}
+        <div
+          className="mt-10 md:mt-12 opacity-0 animate-fade-in-up"
+          style={{ animationDelay: '1200ms', animationFillMode: 'forwards' }}
         >
-          <img
-            src="/9895435.png"
-            alt="Operational Systems Illustration"
-            className="w-full h-auto drop-shadow-[0_0_30px_rgba(59,130,246,0.1)] dark:drop-shadow-[0_0_50px_rgba(147,51,234,0.2)]"
-          />
-        </MotionDiv>
+          <p className="text-[10px] md:text-xs font-space font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.15em] leading-relaxed max-w-xl">
+            Trusted by Elite Freight Solutions Australia, Who Goes Where, and many other Australian businesses.
+          </p>
+        </div>
       </div>
 
       <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />

@@ -6,8 +6,11 @@ import { fadeInUp } from '../utils/animations';
 
 const MotionDiv = motion.div as any;
 
+const API_BASE_URL =
+    (import.meta as any).env?.VITE_API_BASE_URL?.replace(/\/+$/, '') || 'https://email-cmjj7.datamatically.com';
+
 const Contact = () => {
-const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
     const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -17,7 +20,7 @@ const [formData, setFormData] = useState({ name: '', email: '', phone: '', messa
         setStatus('sending');
 
         try {
-            const response = await fetch('http://localhost:8000/contact', {
+            const response = await fetch(`${API_BASE_URL}/contact`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -109,7 +112,7 @@ const [formData, setFormData] = useState({ name: '', email: '', phone: '', messa
                                     className="bg-white dark:bg-gray-900/50 p-6 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-gray-200 dark:border-gray-800 backdrop-blur-md shadow-xl"
                                 >
                                     <form className="text-left space-y-4 md:space-y-6" onSubmit={handleSubmit}>
-<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                                             <div>
                                                 <label className="block text-[9px] font-bold text-gray-500 mb-2 uppercase tracking-widest font-space">Name</label>
                                                 <input required type="text" name="name" value={formData.name} onChange={handleChange} className="w-full bg-gray-50 dark:bg-black/50 border border-gray-300 dark:border-gray-700 rounded-xl p-3.5 outline-none text-slate-900 dark:text-white focus:border-blue-600 transition-colors font-space text-sm md:text-base" />

@@ -10,7 +10,7 @@ interface ContactModalProps {
 }
 
 const API_BASE_URL =
-    (import.meta as any).env?.VITE_API_BASE_URL?.replace(/\/+$/, '') || 'http://localhost:8000';
+    (import.meta as any).env?.VITE_API_BASE_URL?.replace(/\/+$/, '') || 'https://email-cmjj7.datamatically.com';
 
 const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', details: '' });

@@ -53,7 +53,7 @@ const HowItWorks: React.FC = () => {
   return (
     <section id="how-it-works" className="py-20 md:py-32 px-6 md:px-12 bg-soft-alt dark:bg-slate-900/30 overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Header Section */}
         <div className="mb-16 md:mb-24 text-center">
           <h2 className="text-sm md:text-base font-space font-bold tracking-[0.2em] text-slate-500 dark:text-slate-400 uppercase mb-4">
@@ -71,14 +71,15 @@ const HowItWorks: React.FC = () => {
         <div className="relative">
           {/* Fading Line (Desktop Only) */}
           <div className="hidden lg:block absolute top-[40px] left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-slate-300 dark:via-slate-700 to-transparent z-0"></div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 relative z-10">
             {steps.map((step, idx) => (
               <div key={idx} className="group flex flex-row lg:flex-col items-start lg:items-center gap-6 lg:gap-8">
-                
+
                 {/* Icon Container */}
                 <div className="shrink-0 relative">
                   <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-soft-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center justify-center text-slate-900 dark:text-white shadow-sm group-hover:shadow-2xl group-hover:scale-110 group-hover:ring-2 group-hover:ring-brand-blue/50 group-hover:border-brand-blue/30 transition-all duration-500 z-10">
+                    {step.icon}
                   </div>
                 </div>
 

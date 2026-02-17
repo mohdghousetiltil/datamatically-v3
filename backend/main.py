@@ -16,6 +16,7 @@ origins = [
     "http://localhost:5173",  # Vite default
     "http://localhost:3000",  # Common React port
     # Add your production domain here
+    "https://datamatically.com/",
     "*", 
 ]
 

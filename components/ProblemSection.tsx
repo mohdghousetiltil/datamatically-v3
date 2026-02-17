@@ -1,122 +1,155 @@
+import React, { useState, useEffect, useRef, useLayoutEffect } from 'react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
+import ContactModal from './ContactModal';
 
-import React from 'react';
+const MotionDiv = motion.div as any;
 
 const ProblemSection: React.FC = () => {
-  const problems = [
-    {
-      title: "Manual data entry between tools",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 text-blue-500">
-          <rect x="3" y="4" width="6" height="6" rx="1" />
-          <rect x="15" y="14" width="6" height="6" rx="1" />
-          <path d="M12 7h2a1 1 0 0 1 1 1v2" />
-          <path d="M9 13v-2a1 1 0 0 1 1-1h2" />
-          <path d="M11 6l1 1-1 1M13 14l-1-1 1-1" />
-        </svg>
-      )
-    },
-    {
-      title: "Email-based approvals and handoffs",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 text-purple-500">
-          <path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z" />
-          <path d="M3 7l9 6 9-6" />
-          <circle cx="18" cy="15" r="4" className="fill-white dark:fill-slate-900" />
-          <path d="M16.5 15l1 1 2-2" stroke="currentColor" />
-        </svg>
-      )
-    },
-    {
-      title: "Staff re-keying same information",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 text-blue-500">
-          <rect x="3" y="10" width="18" height="10" rx="2" />
-          <path d="M7 14h.01M11 14h.01M15 14h.01M7 17h.01M11 17h.01M15 17h.01" />
-          <path d="M20 7c0-2.209-1.791-4-4-4s-4 1.791-4 4" />
-          <path d="M4 7c0-2.209 1.791-4 4-4s4 1.791 4 4" />
-        </svg>
-      )
-    },
-    {
-      title: "Processes dependent on individuals",
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6 text-purple-500">
-          <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-          <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
-          <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M5.6 18.4l1.4-1.4M17 7l1.4-1.4" />
-        </svg>
-      )
-    }
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [sliderY, setSliderY] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  const points = [
+    { id: "01", text: "Staff stuck doing manual admin" },
+    { id: "02", text: "Spreadsheet chaos" },
+    { id: "03", text: "Data errors costing money" },
+    { id: "04", text: "No real-time operational visibility" },
+    { id: "05", text: "Systems that don’t talk to each other" }
   ];
 
+  // Auto-rotate points
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % points.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [points.length]);
+
+  // Robust slider alignment logic
+  useLayoutEffect(() => {
+    const updatePosition = () => {
+      const el = itemRefs.current[activeIndex];
+      if (!el) return;
+
+      // Align to the vertical center of the row
+      const sliderHeight = 32;
+      const y = el.offsetTop + (el.offsetHeight / 2) - (sliderHeight / 2);
+      setSliderY(y);
+    };
+
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    return () => window.removeEventListener('resize', updatePosition);
+  }, [activeIndex]);
+
+  const handleGetStarted = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsModalOpen(true);
+  };
+
   return (
-    <section id="problem" className="py-12 md:py-16 px-6 md:px-12 bg-soft-white dark:bg-slate-950 overflow-hidden scroll-mt-32 md:scroll-mt-48">
+    <section id="problem" className="py-20 md:py-32 px-6 md:px-12 bg-soft-white dark:bg-slate-950 overflow-hidden scroll-mt-24">
       <div className="max-w-7xl mx-auto">
-        
-        {/* Headline Hook - Centered for mobile */}
-        <div className="text-center md:text-left mb-8 md:mb-12">
-          <h2 className="text-2xl md:text-5xl font-space font-bold leading-tight tracking-tight max-w-3xl md:mx-0 mx-auto">
-            <span className="text-slate-900 dark:text-white block">Most businesses don’t have a growth problem.</span>
-            <span className="text-brand-purple block mt-1">They have a systems problem.</span>
-          </h2>
-        </div>
 
-        {/* Core Insight - Centered for mobile */}
-        <div className="mb-10 md:mb-16 text-center md:text-left">
-          <p className="text-base md:text-xl text-slate-600 dark:text-slate-400 font-sans max-w-3xl leading-relaxed md:mx-0 mx-auto">
-            Operational friction hides in plain sight — in manual handoffs, spreadsheets, and processes that only work because <span className="text-slate-900 dark:text-slate-200 font-semibold italic">“someone knows how.”</span>
-          </p>
-        </div>
+        {/* Main Content Container */}
+        <div className="max-w-3xl">
 
-        {/* Visual Problem Manifesto - 2x2 grid on mobile */}
-        <div className="relative">
-          <div className="hidden lg:block absolute top-1/2 left-0 w-full h-[1px] border-t border-dashed border-slate-200 dark:border-slate-800 -translate-y-1/2 z-0"></div>
-          
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative z-10">
-            {problems.map((prob, idx) => (
-              <div 
-                key={idx}
-                className="group relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 md:p-8 rounded-2xl md:rounded-3xl transition-all duration-300 hover:shadow-lg flex flex-col items-center text-center gap-3 md:gap-6 cursor-default"
-              >
-                <div className="shrink-0 p-2.5 md:p-3 rounded-xl bg-soft-alt dark:bg-slate-800 transition-transform group-hover:scale-105">
-                  {prob.icon}
-                </div>
-                <h3 className="text-xs md:text-lg font-space font-bold text-slate-800 dark:text-slate-200 leading-snug">
-                  {prob.title}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
+          {/* Eyebrow */}
+          <span className="text-xs md:text-sm font-space font-bold tracking-[0.3em] uppercase text-brand-purple mb-4 block">
+            THE REAL PROBLEM
+          </span>
 
-        {/* Consequences Panel - Left aligned CTA */}
-        <div className="mt-12 md:mt-20 flex flex-col items-start gap-8">
-          <div className="max-w-2xl space-y-2">
-            <p className="text-sm md:text-lg text-slate-900 dark:text-slate-100 font-sans">
-              These issues do not just waste time.
-            </p>
-            <p className="text-sm md:text-lg text-slate-500 dark:text-slate-500 font-sans font-normal leading-relaxed">
-              They silently cap scale, increase errors, and force unnecessary headcount.
-            </p>
-            <p className="text-sm md:text-lg font-space font-bold text-slate-900 dark:text-white leading-tight pt-1">
-              Datamatically exists to remove this friction permanently.
+          {/* Headline & Context */}
+          <div className="space-y-6 mb-10 md:mb-12">
+            <h2 className="text-2xl md:text-4xl font-space font-bold leading-tight tracking-tight text-slate-900 dark:text-white">
+              Most businesses don’t have a growth problem. <span className="text-slate-400 dark:text-slate-600">They have a systems problem.</span>
+            </h2>
+            <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 font-sans font-light leading-relaxed max-w-2xl">
+              Operational friction hides in plain sight, quietly capping your ability to scale.
             </p>
           </div>
-          
-          <a 
-            href="https://calendly.com/datamatically" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group flex items-center gap-3 px-6 py-2.5 text-sm md:text-base font-space font-bold text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-xl hover:border-brand-purple dark:hover:border-purple-400 hover:text-brand-purple dark:hover:text-purple-400 transition-all duration-300"
-          >
-            <span>Learn more</span>
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
-        </div>
 
+          {/* List of Friction Points with Vertical Progress Line */}
+          <div className="relative pl-8 md:pl-10 mb-8 md:mb-10">
+
+            {/* The Track (Thin background line) */}
+            <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-slate-200 dark:bg-slate-800" />
+
+            {/* The Moving Accent Segment - Measured and Optimized */}
+            <MotionDiv
+              className="absolute left-[-1.5px] w-[4px] bg-brand-purple rounded-full z-10 shadow-[0_0_12px_rgba(147,51,234,0.5)]"
+              initial={false}
+              animate={{
+                height: 32,
+                y: sliderY
+              }}
+              transition={{ type: 'spring', stiffness: 260, damping: 30 }}
+              style={{ top: 0 }}
+            />
+
+            <div className="space-y-2 md:space-y-4">
+              {points.map((point, index) => {
+                const isActive = activeIndex === index;
+                return (
+                  <div
+                    ref={(el) => { itemRefs.current[index] = el; }}
+                    key={point.id}
+                    className="relative flex items-center gap-5 md:gap-7 transition-all duration-500 min-h-[32px] md:min-h-[40px] cursor-pointer"
+                    onClick={() => setActiveIndex(index)}
+                  >
+                    {/* Number - Reduced size per request */}
+                    <span className={`text-lg md:text-2xl font-space font-extralight tracking-tighter transition-all duration-700 w-8 md:w-12 ${isActive ? 'text-brand-purple opacity-100' : 'text-slate-200 dark:text-slate-800 opacity-50'}`}>
+                      {point.id}
+                    </span>
+
+                    {/* Text Content */}
+                    <MotionDiv
+                      initial={false}
+                      animate={{
+                        opacity: isActive ? 1 : 0.4,
+                        x: isActive ? 0 : -2,
+                        fontWeight: isActive ? 700 : 400
+                      }}
+                      transition={{ duration: 0.5, ease: "easeOut" }}
+                      className={`text-base md:text-xl font-space leading-tight ${isActive ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}
+                    >
+                      {point.text}
+                    </MotionDiv>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Contextual Warning Message - Updated per request */}
+          <div className="mb-10 space-y-4">
+            <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-sans italic leading-relaxed max-w-2xl">
+              These aren’t minor inefficiencies.
+              <br />
+              They compound into missed revenue, preventable errors, and unnecessary headcount.
+            </p>
+            <p className="text-sm md:text-base text-slate-900 dark:text-white font-space font-bold leading-relaxed md:whitespace-nowrap">
+              Datamatically eliminates the friction at the system level — permanently.
+            </p>
+          </div>
+
+          {/* CTA */}
+          <div className="pt-2">
+            <button
+              onClick={handleGetStarted}
+              className="group flex items-center gap-3 px-8 py-4 text-sm md:text-base font-space font-bold text-white bg-slate-900 dark:bg-white dark:text-slate-900 rounded-xl hover:scale-[1.02] active:scale-95 transition-all duration-300 shadow-xl"
+            >
+              <span>Work with us</span>
+              <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </button>
+          </div>
+
+        </div>
       </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   );
 };
