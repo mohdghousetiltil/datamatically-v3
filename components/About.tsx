@@ -88,7 +88,7 @@ export default function About() {
               <TeamMember name="Charlie Guthrie" role="Co-Founder & CEO" />
             </MotionDiv>
             <MotionDiv variants={fadeInUp}>
-              <TeamMember name="Craig Maxpower" role="Co-Founder & COO" />
+              <TeamMember name="Craig Power" role="Co-Founder & COO" />
             </MotionDiv>
           </div>
         </MotionDiv>
