@@ -69,31 +69,33 @@ export default function About() {
         </MotionDiv>
 
         {/* Section: The Team */}
-        <MotionDiv
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-4xl font-space font-bold text-slate-900 dark:text-white mb-4">The Team</h2>
-            <p className="text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">Our multi-disciplinary team combines operational expertise with deep technical mastery.</p>
-          </div>
+        {false && (
+          <MotionDiv
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+          >
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-4xl font-space font-bold text-slate-900 dark:text-white mb-4">The Team</h2>
+              <p className="text-slate-500 max-w-2xl mx-auto font-light leading-relaxed">Our multi-disciplinary team combines operational expertise with deep technical mastery.</p>
+            </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <MotionDiv variants={fadeInUp}>
-              <TeamMember name="Mohammed Ghouse Tiltil" role="Co-Founder & CTO" />
-            </MotionDiv>
-            {/*
-            <MotionDiv variants={fadeInUp}>
-              <TeamMember name="Charlie Guthrie" role="Co-Founder & CEO" />
-            </MotionDiv>
-            */}
-            <MotionDiv variants={fadeInUp}>
-              <TeamMember name="Craig Power" role="Co-Founder & COO" />
-            </MotionDiv>
-          </div>
-        </MotionDiv>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <MotionDiv variants={fadeInUp}>
+                <TeamMember name="Mohammed Ghouse Tiltil" role="Co-Founder & CTO" />
+              </MotionDiv>
+              {/*
+              <MotionDiv variants={fadeInUp}>
+                <TeamMember name="Charlie Guthrie" role="Co-Founder & CEO" />
+              </MotionDiv>
+              */}
+              <MotionDiv variants={fadeInUp}>
+                <TeamMember name="Craig Power" role="Co-Founder & COO" />
+              </MotionDiv>
+            </div>
+          </MotionDiv>
+        )}
 
       </div>
     </section>
