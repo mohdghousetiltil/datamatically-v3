@@ -30,7 +30,7 @@ const Contact = () => {
 
             if (response.ok) {
                 setStatus('sent');
-                setFormData({ name: '', email: '', message: '' }); // Clear form
+                setFormData({ name: '', email: '', phone: '', message: '' }); // Clear form
             } else {
                 console.error('Failed to send message');
                 // optionally handle error state here, e.g. setStatus('error')
